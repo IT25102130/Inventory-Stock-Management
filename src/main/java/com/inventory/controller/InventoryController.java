@@ -1,7 +1,7 @@
 package src.main.java.com.inventory.controller;
 
-import inventory.backend.dto.StockDTO;
-import inventory.backend.service.InventoryService;
+import src.main.java.com.inventory.dto.StockDTO;
+import src.main.java.com.inventory.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

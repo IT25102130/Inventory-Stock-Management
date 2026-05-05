@@ -1,6 +1,6 @@
 package src.main.java.com.inventory.repository;
 
-import inventory.backend.model.Stock;
+import src.main.java.com.inventory.model.Stock;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
