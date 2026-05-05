@@ -1,6 +1,6 @@
 package src.main.java.com.inventory.model;
 
-import common.backend.model.BaseEntity;
+import src.main.java.com.inventory.model.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

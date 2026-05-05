@@ -3,9 +3,9 @@ package src.main.java.com.inventory.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import supplier.backend.dto.SupplierDTO;
-import supplier.backend.model.Supplier;
-import supplier.backend.repository.SupplierRepository;
+import src.main.java.com.inventory.dto.SupplierDTO;
+import src.main.java.com.inventory.model.Supplier;
+import src.main.java.com.inventory.repository.SupplierRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,11 +1,11 @@
 package src.main.java.com.inventory.service;
 
-import login.backend.dto.LoginRequest;
-import login.backend.dto.LoginResponse;
+import src.main.java.com.inventory.dto.LoginRequest;
+import src.main.java.com.inventory.dto.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import user.backend.model.User;
-import user.backend.repository.UserRepository;
+import src.main.java.com.inventory.model.User;
+import src.main.java.com.inventory.repository.UserRepository;
 
 @Service
 public class LoginServiceImpl implements LoginService {

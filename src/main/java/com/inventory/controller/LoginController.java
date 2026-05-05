@@ -1,8 +1,8 @@
 package src.main.java.com.inventory.controller;
 
-import login.backend.dto.LoginRequest;
-import login.backend.dto.LoginResponse;
-import login.backend.service.LoginService;
+import src.main.java.com.inventory.dto.LoginRequest;
+import src.main.java.com.inventory.dto.LoginResponse;
+import src.main.java.com.inventory.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
