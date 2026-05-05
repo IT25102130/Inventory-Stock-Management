@@ -4,8 +4,8 @@ import src.main.java.com.inventory.dto.LoginRequest;
 import src.main.java.com.inventory.dto.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import src.main.java.com.inventory.model.User;
 import src.main.java.com.inventory.repository.UserRepository;
+import src.main.java.com.inventory.model.User;
 
 @Service
 public class LoginServiceImpl implements LoginService {
