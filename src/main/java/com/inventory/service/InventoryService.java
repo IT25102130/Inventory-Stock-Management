@@ -1,6 +1,6 @@
 package src.main.java.com.inventory.service;
 
-import inventory.backend.dto.StockDTO;
+import src.main.java.com.inventory.dto.StockDTO;
 
 import java.util.List;
 

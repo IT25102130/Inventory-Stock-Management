@@ -1,13 +1,13 @@
 package src.main.java.com.inventory.service;
 
-import inventory.backend.dto.StockDTO;
-import inventory.backend.model.Stock;
-import inventory.backend.repository.StockRepository;
+import src.main.java.com.inventory.model.Stock;
+import src.main.java.com.inventory.dto.StockDTO;
+import src.main.java.com.inventory.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import product.backend.model.Product;
-import product.backend.repository.ProductRepository;
+import src.main.java.com.inventory.model.Product;
+import src.main.java.com.inventory.repository.ProductRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -3,8 +3,8 @@ package src.main.java.com.inventory.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import supplier.backend.dto.SupplierDTO;
-import supplier.backend.service.SupplierService;
+import src.main.java.com.inventory.dto.SupplierDTO;
+import src.main.java.com.inventory.service.SupplierService;
 
 import java.util.List;
 

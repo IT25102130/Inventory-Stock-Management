@@ -1,6 +1,6 @@
 package src.main.java.com.inventory.service;
 
-import supplier.backend.dto.SupplierDTO;
+import src.main.java.com.inventory.dto.SupplierDTO;
 import java.util.List;
 
 public interface SupplierService {
