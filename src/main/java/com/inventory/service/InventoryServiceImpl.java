@@ -64,16 +64,10 @@ public class InventoryServiceImpl implements InventoryService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found with ID: " + productId));
 
-        // Find existing stock OR create new
-        Stock stock = stockRepository.findByProductId(productId)
-                .orElse(new Stock());
-
+        // Always create a new stock record instead of merging with an existing one
+        Stock stock = new Stock();
         stock.setProductId(productId);
-
-        // Add quantity (merge logic)
-        int currentQty = (stock.getQuantity() != null) ? stock.getQuantity() : 0;
-        stock.setQuantity(currentQty + quantity);
-
+        stock.setQuantity(quantity);
         stock.setLastUpdated(LocalDateTime.now());
 
         Stock savedStock = stockRepository.save(stock);
