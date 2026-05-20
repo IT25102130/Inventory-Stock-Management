@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('username', username);
 
                 setTimeout(() => {
-                    window.location.href = '/product/index.html';
+                    window.location.href = '/product.html';
                 }, 1500);
             } else {
                 showError(data.message || "Invalid credentials. Please try again.");
