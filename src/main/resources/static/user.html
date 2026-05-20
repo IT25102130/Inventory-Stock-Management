@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User & Role Management - Inventory System</title>
+    <link rel="stylesheet" href="css/userCSS.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+<div class="app-container">
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i class="fas fa-boxes"></i>
+                <h2>Inventory Pro</h2>
+            </div>
+            <p class="sidebar-subtitle">Stock Management</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/product/index.html" class="nav-item">
+                <i class="fas fa-cube"></i>
+                <span>Products</span>
+            </a>
+            <a href="/inventory/index.html" class="nav-item">
+                <i class="fas fa-warehouse"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="/user/index.html" class="nav-item active">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="/supplier/index.html" class="nav-item">
+                <i class="fas fa-truck"></i>
+                <span>Retailers</span>
+            </a>
+            <a href="/transaction/index.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Transactions</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="/login/index.html" class="nav-item logout-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+        <!-- HEADER -->
+        <header class="content-header">
+            <div class="header-content">
+                <div>
+                    <h1><i class="fas fa-users"></i> User & Role Management</h1>
+                    <p>Manage system users and their access levels</p>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <p class="stat-label">Total Users</p>
+                            <p class="stat-value" id="totalUsers">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ================= FORM SECTION ================= -->
+        <section class="form-section card">
+            <div class="section-header">
+                <h3 id="formTitle">
+                    <i class="fas fa-user-plus"></i>
+                    Add New User
+                </h3>
+                <p class="section-description">Create a new user account or update existing user information</p>
+            </div>
+
+            <form id="userForm" class="modern-form">
+                <input type="hidden" id="userId">
+
+                <div class="form-grid">
+                    <!-- Username Field -->
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i>
+                            Username
+                        </label>
+                        <div class="input-wrapper">
+                            <input
+                                    type="text"
+                                    id="username"
+                                    required
+                                    placeholder="Enter username"
+                                    autocomplete="username"
+                            >
+                            <span class="input-icon"><i class="fas fa-check-circle"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <div class="input-wrapper">
+                            <input
+                                    type="password"
+                                    id="password"
+                                    placeholder="Enter password (leave blank to keep current)"
+                                    autocomplete="new-password"
+                            >
+                            <span class="input-icon"><i class="fas fa-check-circle"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Role Field -->
+                    <div class="form-group">
+                        <label for="roleId">
+                            <i class="fas fa-shield-alt"></i>
+                            Role
+                        </label>
+                        <div class="input-wrapper">
+                            <select id="roleId" required>
+                                <option value="">Select Role</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn" class="btn-primary">
+                        <i class="fas fa-save"></i>
+                        <span>Add User</span>
+                    </button>
+                    <button type="button" id="clearBtn" class="btn-secondary">
+                        <i class="fas fa-redo"></i>
+                        <span>Clear Form</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- ================= TABLE SECTION ================= -->
+        <section class="table-section card">
+            <div class="section-header">
+                <h3>
+                    <i class="fas fa-list"></i>
+                    User List
+                </h3>
+                <p class="section-description">All system users and their assigned roles</p>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="userTable" class="data-table">
+                    <thead>
+                    <tr>
+                        <th>
+                            <i class="fas fa-user"></i>
+                            Username
+                        </th>
+                        <th>
+                            <i class="fas fa-shield-alt"></i>
+                            Role
+                        </th>
+                        <th>
+                            <i class="fas fa-calendar"></i>
+                            Created Date
+                        </th>
+                        <th>
+                            <i class="fas fa-cogs"></i>
+                            Actions
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                    <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="js/userJS.js?v=4"></script>
+</body>
+
+</html>
