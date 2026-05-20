@@ -10,4 +10,5 @@ public interface ProductService {
     ProductDTO createProduct(ProductDTO productDTO);
     ProductDTO updateProduct(Long id, ProductDTO productDTO);
     void deleteProduct(Long id);
+    Long getProductCount();
 }

@@ -55,6 +55,12 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Long getProductCount() {
+        return productRepository.count();
+    }
+
     private ProductDTO convertToDTO(Product product) {
         ProductDTO dto = new ProductDTO();
         dto.setId(product.getId());
