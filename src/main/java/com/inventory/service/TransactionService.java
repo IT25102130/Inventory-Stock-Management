@@ -1,6 +1,7 @@
-package transaction.backend.service;
+package src.main.java.com.inventory.service;
 
-import transaction.backend.dto.TransactionDTO;
+import src.main.java.com.inventory.dto.TransactionDTO;
+
 import java.util.List;
 
 public interface TransactionService {

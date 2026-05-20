@@ -1,16 +1,16 @@
-package transaction.backend.service;
+package src.main.java.com.inventory.service;
 
+import src.main.java.com.inventory.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import transaction.backend.dto.TransactionDTO;
-import transaction.backend.model.Transaction;
-import transaction.backend.repository.TransactionRepository;
-import inventory.backend.service.InventoryService;
-import product.backend.repository.ProductRepository;
-import supplier.backend.repository.SupplierRepository;
-import product.backend.model.Product;
-import supplier.backend.model.Supplier;
+import src.main.java.com.inventory.model.Product;
+import src.main.java.com.inventory.repository.ProductRepository;
+import src.main.java.com.inventory.model.Supplier;
+import src.main.java.com.inventory.repository.SupplierRepository;
+import src.main.java.com.inventory.dto.TransactionDTO;
+import src.main.java.com.inventory.model.Transaction;
+import src.main.java.com.inventory.repository.TransactionRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

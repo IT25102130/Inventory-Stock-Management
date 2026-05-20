@@ -1,4 +1,4 @@
-package com.inventory;
+package src.main.java.com.inventory;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,12 +7,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan("com.inventory")
-
-@EntityScan("com.inventory.model")
-
-@EnableJpaRepositories("com.inventory.repository")
-
+@ComponentScan(basePackages = {
+        "src.main.java.com.inventory"
+})
+@EntityScan(basePackages = {
+        "src.main.java.com.inventory.model"
+})
+@EnableJpaRepositories(basePackages = {
+        "src.main.java.com.inventory.repository"
+})
 public class InventoryApplication {
     public static void main(String[] args) {
         SpringApplication.run(InventoryApplication.class, args);
