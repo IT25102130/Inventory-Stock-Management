@@ -1,5 +1,6 @@
 package src.main.java.com.inventory.dto;
 
+
 public class LoginRequest {
     private String username;
     private String password;
@@ -10,3 +11,4 @@ public class LoginRequest {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 }
+
