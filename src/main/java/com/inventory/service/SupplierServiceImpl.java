@@ -32,7 +32,8 @@ public class SupplierServiceImpl implements SupplierService {
     public SupplierDTO createSupplier(SupplierDTO supplierDTO) {
         Supplier supplier = new Supplier();
         supplier.setName(supplierDTO.getName());
-        supplier.setContact(supplierDTO.getContact());
+        supplier.setPhone(supplierDTO.getPhone());
+        supplier.setEmail(supplierDTO.getEmail());
         supplier.setAddress(supplierDTO.getAddress());
         supplier = supplierRepository.save(supplier);
         return convertToDTO(supplier);
@@ -43,7 +44,8 @@ public class SupplierServiceImpl implements SupplierService {
     public SupplierDTO updateSupplier(Long id, SupplierDTO supplierDTO) {
         Supplier supplier = supplierRepository.findById(id).orElseThrow(() -> new RuntimeException("Supplier not found"));
         supplier.setName(supplierDTO.getName());
-        supplier.setContact(supplierDTO.getContact());
+        supplier.setPhone(supplierDTO.getPhone());
+        supplier.setEmail(supplierDTO.getEmail());
         supplier.setAddress(supplierDTO.getAddress());
         supplier = supplierRepository.save(supplier);
         return convertToDTO(supplier);
@@ -59,7 +61,8 @@ public class SupplierServiceImpl implements SupplierService {
         SupplierDTO dto = new SupplierDTO();
         dto.setId(supplier.getId());
         dto.setName(supplier.getName());
-        dto.setContact(supplier.getContact());
+        dto.setPhone(supplier.getPhone());
+        dto.setEmail(supplier.getEmail());
         dto.setAddress(supplier.getAddress());
         return dto;
     }
