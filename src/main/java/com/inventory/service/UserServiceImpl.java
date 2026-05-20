@@ -43,13 +43,13 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setUsername(userDTO.getUsername());
         user.setPassword(userDTO.getPassword());
-        
+
         if (userDTO.getRoleId() != null) {
             Role role = roleRepository.findById(userDTO.getRoleId())
-                .orElseThrow(() -> new RuntimeException("Role not found"));
+                    .orElseThrow(() -> new RuntimeException("Role not found"));
             user.setRole(role);
         }
-        
+
         user = userRepository.save(user);
         return convertToDTO(user);
     }
@@ -59,17 +59,17 @@ public class UserServiceImpl implements UserService {
     public UserDTO updateUser(Long id, UserDTO userDTO) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
         user.setUsername(userDTO.getUsername());
-        
+
         if (userDTO.getPassword() != null && !userDTO.getPassword().isEmpty()) {
             user.setPassword(userDTO.getPassword());
         }
-        
+
         if (userDTO.getRoleId() != null) {
             Role role = roleRepository.findById(userDTO.getRoleId())
-                .orElseThrow(() -> new RuntimeException("Role not found"));
+                    .orElseThrow(() -> new RuntimeException("Role not found"));
             user.setRole(role);
         }
-        
+
         user = userRepository.save(user);
         return convertToDTO(user);
     }
@@ -90,6 +90,7 @@ public class UserServiceImpl implements UserService {
             dto.setRoleId(user.getRole().getId());
             dto.setRoleName(user.getRole().getRoleName());
         }
+        dto.setCreatedAt(user.getCreatedAt());
         return dto;
     }
 }
