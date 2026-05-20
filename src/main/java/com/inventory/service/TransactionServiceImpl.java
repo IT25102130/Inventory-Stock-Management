@@ -39,25 +39,29 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public TransactionDTO getTransactionById(Long id) {
         Transaction transaction = transactionRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Transaction not found"));
+                .orElseThrow(() -> new RuntimeException("Transaction not found"));
         return convertToDTO(transaction);
     }
 
     @Override
     @Transactional
     public TransactionDTO createTransaction(TransactionDTO transactionDTO) {
+        Product product = productRepository.findById(transactionDTO.getProductId())
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+        Double productPrice = product.getPrice() != null ? product.getPrice() : 0.0;
+
         Transaction transaction = new Transaction();
         transaction.setProductId(transactionDTO.getProductId());
         transaction.setSupplierId(transactionDTO.getSupplierId());
         transaction.setQuantity(transactionDTO.getQuantity());
-        transaction.setTotalPrice(transactionDTO.getTotalPrice());
+        transaction.setTotalPrice(transactionDTO.getQuantity() * productPrice);
         transaction.setDate(LocalDateTime.now());
-        
+
         transaction = transactionRepository.save(transaction);
-        
-        // Update Stock when transaction occurs
-        inventoryService.addStockByProductId(transactionDTO.getProductId(), transactionDTO.getQuantity());
-        
+
+        // Update Stock when transaction occurs (decrease stock by transaction quantity)
+        inventoryService.addStockByProductId(transactionDTO.getProductId(), -transactionDTO.getQuantity());
+
         return convertToDTO(transaction);
     }
 
@@ -66,23 +70,28 @@ public class TransactionServiceImpl implements TransactionService {
     public TransactionDTO updateTransaction(Long id, TransactionDTO transactionDTO) {
         Transaction transaction = transactionRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Transaction not found"));
-        
+
+        Product product = productRepository.findById(transactionDTO.getProductId())
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+        Double productPrice = product.getPrice() != null ? product.getPrice() : 0.0;
+
         // Calculate difference in quantity to update stock properly
         Integer oldQuantity = transaction.getQuantity();
         Integer newQuantity = transactionDTO.getQuantity();
         Integer quantityDifference = newQuantity - oldQuantity;
-        
+
         transaction.setProductId(transactionDTO.getProductId());
         transaction.setSupplierId(transactionDTO.getSupplierId());
         transaction.setQuantity(newQuantity);
-        transaction.setTotalPrice(transactionDTO.getTotalPrice());
-        
+        transaction.setTotalPrice(newQuantity * productPrice);
+
         transaction = transactionRepository.save(transaction);
-        
+
         if (quantityDifference != 0) {
-            inventoryService.addStockByProductId(transactionDTO.getProductId(), quantityDifference);
+            // Decrease stock by the difference
+            inventoryService.addStockByProductId(transactionDTO.getProductId(), -quantityDifference);
         }
-        
+
         return convertToDTO(transaction);
     }
 
@@ -91,8 +100,8 @@ public class TransactionServiceImpl implements TransactionService {
     public void deleteTransaction(Long id) {
         Transaction transaction = transactionRepository.findById(id).orElse(null);
         if (transaction != null) {
-            // Revert stock before deleting
-            inventoryService.addStockByProductId(transaction.getProductId(), -transaction.getQuantity());
+            // Revert stock before deleting (increase stock back by the transaction quantity)
+            inventoryService.addStockByProductId(transaction.getProductId(), transaction.getQuantity());
             transactionRepository.deleteById(id);
         }
     }
@@ -105,17 +114,17 @@ public class TransactionServiceImpl implements TransactionService {
         dto.setQuantity(transaction.getQuantity());
         dto.setTotalPrice(transaction.getTotalPrice());
         dto.setDate(transaction.getDate());
-        
+
         if (transaction.getProductId() != null) {
             Product product = productRepository.findById(transaction.getProductId()).orElse(null);
             dto.setProductName(product != null ? product.getProductName() : "Unknown");
         }
-        
+
         if (transaction.getSupplierId() != null) {
             Supplier supplier = supplierRepository.findById(transaction.getSupplierId()).orElse(null);
             dto.setSupplierName(supplier != null ? supplier.getName() : "Unknown");
         }
-        
+
         return dto;
     }
 }
