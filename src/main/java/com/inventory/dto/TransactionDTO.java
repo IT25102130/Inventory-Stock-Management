@@ -1,4 +1,4 @@
-package src.main.java.com.inventory.dto;
+package transaction.backend.dto;
 
 import java.time.LocalDateTime;
 

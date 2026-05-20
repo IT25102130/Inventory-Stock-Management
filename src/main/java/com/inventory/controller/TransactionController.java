@@ -1,10 +1,10 @@
-package src.main.java.com.inventory.controller;
+package transaction.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import src.main.java.com.inventory.dto.TransactionDTO;
-import src.main.java.com.inventory.service.TransactionService;
+import transaction.backend.dto.TransactionDTO;
+import transaction.backend.service.TransactionService;
 
 import java.util.List;
 

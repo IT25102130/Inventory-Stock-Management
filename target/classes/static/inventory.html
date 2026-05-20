@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock & Inventory Management</title>
+    <link rel="stylesheet" href="css/inventoryCSS.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i class="fas fa-boxes"></i>
+                <h2>Inventory Pro</h2>
+            </div>
+            <p class="sidebar-subtitle">Stock Management</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/product.html" class="nav-item">
+                <i class="fas fa-cube"></i>
+                <span>Products</span>
+            </a>
+            <a href="/inventory.html" class="nav-item active">
+                <i class="fas fa-warehouse"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="/user.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="/supplier.html" class="nav-item">
+                <i class="fas fa-truck"></i>
+                <span>Retailers</span>
+            </a>
+            <a href="/transaction.html" class="nav-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Transactions</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="/login.html" class="nav-item logout-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="content-header">
+            <div class="header-content">
+                <div>
+                    <h1><i class="fas fa-warehouse"></i> Stock & Inventory Management</h1>
+                    <p>Track and manage your product inventory levels</p>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-boxes"></i>
+                        <div>
+                            <p class="stat-label">Total Items</p>
+                            <p class="stat-value" id="totalItems">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ================= STOCK SUMMARY SECTION ================= -->
+        <section class="card" style="margin-bottom: 24px; padding: 24px;">
+            <div class="section-header" style="margin-bottom: 20px;">
+                <h3>
+                    <i class="fas fa-chart-pie"></i>
+                    Current Stock Summary (Total per Product)
+                </h3>
+                <p class="section-description">Total aggregated quantity for each product across all creations</p>
+            </div>
+            <div class="summary-grid" id="stockSummaryContainer">
+                <!-- Data will be loaded here dynamically -->
+            </div>
+        </section>
+
+        <!-- ================= FORM SECTION ================= -->
+        <section class="card">
+
+            <div class="section-header">
+                <h3 id="formTitle">
+                    <i class="fas fa-plus-circle"></i>
+                    Add / Update Stock
+                </h3>
+                <p class="section-description">Manage product inventory quantities and track stock levels</p>
+            </div>
+
+            <form id="stockForm" class="modern-form">
+
+                <input type="hidden" id="stockId">
+
+                <div class="form-grid">
+
+                    <!-- Product Select -->
+                    <div class="form-group">
+                        <label for="productSelect">
+                            <i class="fas fa-box"></i>
+                            Product
+                        </label>
+                        <div class="input-wrapper">
+                            <select id="productSelect" required>
+                                <option value="">Select Product</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Quantity Input -->
+                    <div class="form-group">
+                        <label for="quantity">
+                            <i class="fas fa-chart-bar"></i>
+                            Quantity
+                        </label>
+                        <div class="input-wrapper">
+                            <input
+                                    type="number"
+                                    id="quantity"
+                                    min="0"
+                                    required
+                                    placeholder="Enter quantity"
+                            >
+                            <span class="input-icon"><i class="fas fa-check-circle"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn" class="btn-primary">
+                        <i class="fas fa-save"></i>
+                        <span>Save Stock</span>
+                    </button>
+
+                    <button type="button" id="clearBtn" class="btn-secondary">
+                        <i class="fas fa-redo"></i>
+                        <span>Clear Form</span>
+                    </button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- ================= TABLE SECTION ================= -->
+        <section class="card">
+
+            <div class="section-header">
+                <h3>
+                    <i class="fas fa-list"></i>
+                    Stock List
+                </h3>
+                <p class="section-description">All inventory items and their current stock levels</p>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table class="data-table">
+
+                    <thead>
+                    <tr>
+                        <th>
+                            <i class="fas fa-box"></i>
+                            Product Name
+                        </th>
+                        <th>
+                            <i class="fas fa-chart-bar"></i>
+                            Quantity
+                        </th>
+                        <th>
+                            <i class="fas fa-calendar"></i>
+                            Last Updated
+                        </th>
+                        <th>
+                            <i class="fas fa-cogs"></i>
+                            Actions
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="stockTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- SCRIPT -->
+<script src="js/inventoryJS.js"></script>
+
+</body>
+
+</html>
