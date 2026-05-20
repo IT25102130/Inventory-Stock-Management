@@ -6,4 +6,3 @@ import src.main.java.com.inventory.dto.LoginResponse;
 public interface LoginService {
     LoginResponse authenticate(LoginRequest loginRequest);
 }
-}
