@@ -56,8 +56,8 @@ public class InventoryServiceImpl implements InventoryService {
             throw new RuntimeException("Product ID is required");
         }
 
-        if (quantity == null || quantity <= 0) {
-            throw new RuntimeException("Quantity must be greater than 0");
+        if (quantity == null || quantity == 0) {
+            throw new RuntimeException("Quantity must not be zero");
         }
 
         // Optional: Check if product exists
